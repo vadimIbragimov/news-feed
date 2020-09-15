@@ -1,0 +1,19 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "jsRules": {},
+    "rules": {
+        "trailing-comma": [ false ]
+    },
+    "rulesDirectory": [],
+    "triple-equals":  [true, "allow-undefined-check", "allow-null-check"],
+    "strict-comparisons":  [
+        true,
+        {
+          "allow-object-equal-comparison": false,
+          "allow-string-order-comparison": false
+        }
+      ]
+}
