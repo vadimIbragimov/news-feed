@@ -5,8 +5,10 @@ import {connect, connection} from "mongoose"
 
 const app = express()
 const PORT = 808
-const connectionUrl =  'mongodb+srv://myTestGraph:Qweewq123@cluster0.z0qq5.mongodb.net/<dbname>?retryWrites=true&w=majority'
-connect( connectionUrl , { useUnifiedTopology: true });
+const connectionUrl =  //'mongodb+srv://myTestGraph:Qweewq123@cluster0.z0qq5.mongodb.net/news?retryWrites=true&w=majority'
+'mongodb+srv://myTestGraph:Qweewq123@cluster0.z0qq5.mongodb.net/news?retryWrites=true&w=majority'
+connect( connectionUrl , { useUnifiedTopology: true , useNewUrlParser: true});
+
 
 
 // define a route handler for the default home page
