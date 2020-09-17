@@ -35,7 +35,7 @@ const authorSchema = new Schema({
 const articleSchema = new Schema({
     heading: String,
     text: String,
-    date: Date,
+    date: String,
     authorId: String
 })
 
