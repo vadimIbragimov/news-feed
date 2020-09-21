@@ -1,12 +1,12 @@
-import { 
-    GraphQLObjectType, 
-    GraphQLString, 
-    GraphQLSchema, 
-    GraphQLInt, 
-    GraphQLID, 
-    GraphQLList, 
-    GraphQLSkipDirective, 
-    GraphQLNonNull, 
+import {
+    GraphQLObjectType,
+    GraphQLString,
+    GraphQLSchema,
+    GraphQLInt,
+    GraphQLID,
+    GraphQLList,
+    GraphQLSkipDirective,
+    GraphQLNonNull,
     GraphQLBoolean, GraphQLScalarType
 } from "graphql"
 import { Schema, model } from "mongoose"
