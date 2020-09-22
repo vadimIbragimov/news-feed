@@ -4,6 +4,18 @@ type author {
     nickname: String
 }
 
+type article {
+    id: ID
+    heading: String,
+    text: String,
+    date: String,
+    authorId: author
+}
+
 type Query {
     author(id: ID): author
+    query: Query
+    authors: [author]
+    articles: [article]
 }
+

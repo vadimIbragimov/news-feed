@@ -3,13 +3,11 @@
 // @ts-nocheck
 
 import { ConcreteRequest } from "relay-runtime";
-export type AppQueryVariables = {
-    id?: string | null;
-};
+export type AppQueryVariables = {};
 export type AppQueryResponse = {
-    readonly author: {
+    readonly articles: ReadonlyArray<{
         readonly id: string | null;
-    } | null;
+    } | null> | null;
 };
 export type AppQuery = {
     readonly response: AppQueryResponse;
@@ -19,10 +17,8 @@ export type AppQuery = {
 
 
 /*
-query AppQuery(
-  $id: ID
-) {
-  author(id: $id) {
+query AppQuery {
+  articles {
     id
   }
 }
@@ -31,25 +27,12 @@ query AppQuery(
 const node: ConcreteRequest = (function(){
 var v0 = [
   {
-    "defaultValue": null,
-    "kind": "LocalArgument",
-    "name": "id"
-  }
-],
-v1 = [
-  {
     "alias": null,
-    "args": [
-      {
-        "kind": "Variable",
-        "name": "id",
-        "variableName": "id"
-      }
-    ],
-    "concreteType": "author",
+    "args": null,
+    "concreteType": "article",
     "kind": "LinkedField",
-    "name": "author",
-    "plural": false,
+    "name": "articles",
+    "plural": true,
     "selections": [
       {
         "alias": null,
@@ -64,30 +47,30 @@ v1 = [
 ];
 return {
   "fragment": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
     "name": "AppQuery",
-    "selections": (v1/*: any*/),
+    "selections": (v0/*: any*/),
     "type": "Query",
     "abstractKey": null
   },
   "kind": "Request",
   "operation": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [],
     "kind": "Operation",
     "name": "AppQuery",
-    "selections": (v1/*: any*/)
+    "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "5d7a756c5dabe16653f88efefef8cb78",
+    "cacheID": "348b03e55416be8dc1f68aac20cbf76b",
     "id": null,
     "metadata": {},
     "name": "AppQuery",
     "operationKind": "query",
-    "text": "query AppQuery(\n  $id: ID\n) {\n  author(id: $id) {\n    id\n  }\n}\n"
+    "text": "query AppQuery {\n  articles {\n    id\n  }\n}\n"
   }
 };
 })();
-(node as any).hash = '6125713d11cb94cf49ca8ae5f99b40a0';
+(node as any).hash = 'ef4f86568b3b25237a24cdea7bb7d92a';
 export default node;

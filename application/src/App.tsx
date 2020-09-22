@@ -1,44 +1,47 @@
 import React from 'react';
 import './App.css';
-import { graphql, QueryRenderer } from 'react-relay'
-import environment from './Relay/emvironment'
+import { graphql } from 'react-relay/hooks'
+import RelayEnvironment from './Relay/RelayEnvironment'
+import {
+  RelayEnvironmentProvider,
+  preloadQuery,
+  usePreloadedQuery,
+} from 'react-relay/hooks'
+import ArticleComponent from './components/ArticleComponent';
 
-const query = graphql`
-  query AppQuery($id: ID){
-    author(id: $id){
+const { Suspense } = React;
+
+const RepositoryNameQuery = graphql`
+  query AppQuery{
+    articles{
       id
     }
   }
-`
-interface Props {
-  error: Error | null;
-  props: any;
-}
+`;
 
-const renderComponent = ({ error, props }: Props) => {
-  if(error) {
-    return <div>Error!</div>
-  }
-  if(!props) {
-    return <div>Loading..</div>
-  }
-  console.log('[renderComponent] : error ', error, ', props', props)
-  return <div>See props in console log </div>
-};
+const preloadedQuery = preloadQuery(RelayEnvironment, RepositoryNameQuery, {id: 1});
 
-function App() {
+
+function  App(props: any) {
+  const data: any = usePreloadedQuery(RepositoryNameQuery, props.preloadedQuery);
   return (
     <div className="App">
-      <QueryRenderer
-        environment={environment}
-        query={query}
-        variables={{
-          id: '5f5b48ecf9ab6f7548c30d83'
-        }}
-        render={renderComponent}
-      />
+      <header className="App-header">
+        Какой-то хэдер
+      </header>
+      <ArticleComponent info={data}/>
     </div>
   );
 }
 
-export default App;
+function AppRoot(props: any) {
+  return (
+    <RelayEnvironmentProvider environment={RelayEnvironment}>
+      <Suspense fallback={'Loading...'}>
+        <App preloadedQuery={preloadedQuery} />
+      </Suspense>
+    </RelayEnvironmentProvider>
+  );
+}
+
+export default AppRoot;
