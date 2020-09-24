@@ -5,9 +5,8 @@ import { Environment } from 'relay-runtime'
 import getEnvironment from './Relay/RelayEnvironment'
 import {
     RelayEnvironmentProvider,
-    preloadQuery,
+    loadQuery as lq,
     usePreloadedQuery,
-
 } from 'react-relay/hooks'
 import ArticleComponent from './components/ArticleComponent';
 
@@ -22,8 +21,8 @@ const RepositoryNameQuery = graphql`
 `;
 const RelayEnvironment = getEnvironment('http://localhost:808/graphql') as Environment
 console.log('[App]: RelayEnvironment instanceof Environment? ', RelayEnvironment instanceof Environment)
-
-const preloadedQuery = preloadQuery(RelayEnvironment, RepositoryNameQuery, {});
+console.log(lq);
+const preloadedQuery = lq.loadQuery(RelayEnvironment, RepositoryNameQuery, {});
 
 function App(props: any) {
     const data: any = usePreloadedQuery(RepositoryNameQuery, props.preloadedQuery);
