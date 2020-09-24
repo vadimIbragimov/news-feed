@@ -9,7 +9,7 @@ type article {
     heading: String,
     text: String,
     date: String,
-    authorId: author
+    author: author
 }
 
 type Query {

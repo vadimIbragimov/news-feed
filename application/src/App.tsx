@@ -17,6 +17,11 @@ const RepositoryNameQuery = graphql`
   query AppQuery{
     news{
       id
+      heading
+      text
+      author{
+          nickname
+      }
     }
   }
 `;
