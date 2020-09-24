@@ -34,7 +34,7 @@ function App(props: any) {
     return (
         <div className="App">
             <header className="App-header">
-                Какой-то хэдер
+                Новости для любителя json
       </header>
             <ArticleComponent info={data} />
         </div>
