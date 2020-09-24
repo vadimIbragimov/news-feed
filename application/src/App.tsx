@@ -23,14 +23,12 @@ const RepositoryNameQuery = graphql`
       }
     }
   }
-`;
-const RelayEnvironment = getEnvironment('http://localhost:808/graphql') as Environment
-console.log('[App]: RelayEnvironment instanceof Environment? ', RelayEnvironment instanceof Environment)
-console.log(lq);
-const preloadedQuery = lq.loadQuery(RelayEnvironment, RepositoryNameQuery, {});
+`
+const RelayEnvironment = getEnvironment('http://localhost:808/graphql')
+const preloadedQuery = lq.loadQuery(RelayEnvironment, RepositoryNameQuery, {})
 
 function App(props: any) {
-    const data: any = usePreloadedQuery(RepositoryNameQuery, props.preloadedQuery);
+    const data: any = usePreloadedQuery(RepositoryNameQuery, props.preloadedQuery)
     return (
         <div className="App">
             <header className="App-header">

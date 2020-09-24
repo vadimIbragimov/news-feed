@@ -29,9 +29,6 @@ const getEnvironment: (url: string) => Environment = (url)=>{
         store: new Store(new RecordSource()),
     
     })
-
-    console.log('[RelayEnvironment]: environment instanceof Environment? ',environment instanceof Environment, environment)
-
     return environment
 };
 
