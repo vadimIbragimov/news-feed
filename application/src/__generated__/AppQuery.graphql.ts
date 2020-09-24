@@ -5,7 +5,7 @@
 import { ConcreteRequest } from "relay-runtime";
 export type AppQueryVariables = {};
 export type AppQueryResponse = {
-    readonly articles: ReadonlyArray<{
+    readonly news: ReadonlyArray<{
         readonly id: string | null;
     } | null> | null;
 };
@@ -18,7 +18,7 @@ export type AppQuery = {
 
 /*
 query AppQuery {
-  articles {
+  news {
     id
   }
 }
@@ -31,7 +31,7 @@ var v0 = [
     "args": null,
     "concreteType": "article",
     "kind": "LinkedField",
-    "name": "articles",
+    "name": "news",
     "plural": true,
     "selections": [
       {
@@ -63,14 +63,14 @@ return {
     "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "348b03e55416be8dc1f68aac20cbf76b",
+    "cacheID": "b8693f7cf28fd5e3af2a84e30c5748d5",
     "id": null,
     "metadata": {},
     "name": "AppQuery",
     "operationKind": "query",
-    "text": "query AppQuery {\n  articles {\n    id\n  }\n}\n"
+    "text": "query AppQuery {\n  news {\n    id\n  }\n}\n"
   }
 };
 })();
-(node as any).hash = 'ef4f86568b3b25237a24cdea7bb7d92a';
+(node as any).hash = 'a09737c285dc4feeaf9ffc2197fbeb48';
 export default node;
