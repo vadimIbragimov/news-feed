@@ -1,12 +1,14 @@
 import React from 'react';
 import './App.css';
 import { graphql } from 'react-relay'
-import { Environment } from 'relay-runtime'
+import { Environment, GraphQLTaggedNode } from 'relay-runtime'
 import getEnvironment from './Relay/RelayEnvironment'
 import {
     RelayEnvironmentProvider,
     loadQuery as lq,
+    preloadQuery,
     usePreloadedQuery,
+    PreloadedQuery
 } from 'react-relay/hooks'
 import ArticleComponent from './components/ArticleComponent';
 
@@ -27,7 +29,8 @@ const RepositoryNameQuery = graphql`
 const RelayEnvironment = getEnvironment('http://localhost:808/graphql')
 const preloadedQuery = lq.loadQuery(RelayEnvironment, RepositoryNameQuery, {})
 
-function App(props: any) {
+
+const App = (props: {preloadedQuery: any}): JSX.Element =>{
     const data: any = usePreloadedQuery(RepositoryNameQuery, props.preloadedQuery)
     return (
         <div className="App">
@@ -39,7 +42,7 @@ function App(props: any) {
     );
 }
 
-function AppRoot(props: any) {
+const AppRoot = (): JSX.Element => {
     return (
         <RelayEnvironmentProvider environment={RelayEnvironment}>
             <Suspense fallback={'Loading...'}>
@@ -48,5 +51,7 @@ function AppRoot(props: any) {
         </RelayEnvironmentProvider>
     );
 }
+
+
 
 export default AppRoot;
